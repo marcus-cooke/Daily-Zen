@@ -1,0 +1,49 @@
+# Gatsby Project .gitignore
+
+# Gatsby cache and build files
+.cache/
+public/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Environment variables
+.env*
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Build files
+/build/
+/dist/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# IDE and editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.project
+.settings/
+.classpath
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 
