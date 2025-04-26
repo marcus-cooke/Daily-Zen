@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
 import Header from "./Header"
 import Footer from "./Footer"
 import SEO from "./SEO"
+import "../styles/global.css"
 
 // Define themes
 const lightTheme = {
@@ -23,26 +23,6 @@ const darkTheme = {
   muted: "#44337a",
 }
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${props => props.theme.background};
-    color: ${props => props.theme.text};
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    transition: all 0.3s ease;
-  }
-  
-  a {
-    color: ${props => props.theme.primary};
-    text-decoration: none;
-    
-    &:hover {
-      color: ${props => props.theme.accent};
-    }
-  }
-`
-
 const Layout = ({ children, title, description }) => {
   // Check if localStorage is available (client-side)
   const isBrowser = typeof window !== "undefined"
@@ -56,6 +36,13 @@ const Layout = ({ children, title, description }) => {
   useEffect(() => {
     if (isBrowser) {
       localStorage.setItem("theme", isDarkMode ? "dark" : "light")
+      
+      // Add or remove dark class to html element
+      if (isDarkMode) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
     }
   }, [isDarkMode, isBrowser])
 
@@ -67,30 +54,16 @@ const Layout = ({ children, title, description }) => {
   const currentTheme = isDarkMode ? darkTheme : lightTheme
 
   return (
-    <ThemeProvider theme={currentTheme}>
-      <GlobalStyle />
+    <div className={`${isDarkMode ? 'bg-background-dark text-text-dark' : 'bg-background-light text-text-light'} min-h-screen transition-colors duration-300`}>
       <SEO title={title} description={description} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-        }}
-      >
+      <div className="flex flex-col min-h-screen">
         <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-        <main
-          style={{
-            flex: 1,
-            maxWidth: "1200px",
-            margin: "0 auto",
-            padding: "2rem",
-          }}
-        >
+        <main className="flex-1 max-w-7xl mx-auto p-8">
           {children}
         </main>
         <Footer />
       </div>
-    </ThemeProvider>
+    </div>
   )
 }
 

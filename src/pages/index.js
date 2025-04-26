@@ -2,26 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import QuoteDisplay from "../components/QuoteDisplay"
-import styled from "styled-components"
-
-const HomePage = styled.div`
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-`
-
-const Title = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: ${props => props.theme.text};
-`
-
-const Subtitle = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  color: ${props => props.theme.text};
-  opacity: 0.8;
-`
 
 const IndexPage = ({ data }) => {
   // Get all quotes from the quoteSample.json file
@@ -46,11 +26,11 @@ const IndexPage = ({ data }) => {
       title="Daily Inspiration"
       description="Get your daily dose of inspiration with thoughtful quotes."
     >
-      <HomePage>
-        <Title>Daily Zen</Title>
-        <Subtitle>Your daily dose of inspiration</Subtitle>
+      <div className="text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl mb-2 text-text-light dark:text-text-dark">Daily Zen</h1>
+        <p className="text-xl mb-12 text-text-light dark:text-text-dark opacity-80">Your daily dose of inspiration</p>
         {randomQuote && <QuoteDisplay quote={quoteWithDefaults} />}
-      </HomePage>
+      </div>
     </Layout>
   )
 }

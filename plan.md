@@ -55,9 +55,6 @@ src/
 - Implement daily quote rotation logic
 
 ### Phase 2: Enhanced Features
-- Create quote archive page
-- Implement categorization system
-- Add social sharing functionality
 - Implement dark/light mode toggle
 
 ### Phase 3: Polish & Deployment
@@ -71,9 +68,6 @@ src/
 Quotes will be stored in a structured format (JSON or Markdown) with the following properties:
 - Quote text
 - Author
-- Source (book, speech, etc.)
-- Category/tags
-- Date to be displayed
 
 ## Deployment Strategy
 1. Set up GitHub repository

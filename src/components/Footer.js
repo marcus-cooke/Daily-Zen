@@ -1,65 +1,45 @@
 import React from "react"
-import styled from "styled-components"
-
-const FooterContainer = styled.footer`
-  background-color: ${props => props.theme.background};
-  color: ${props => props.theme.text};
-  padding: 2rem;
-  margin-top: 3rem;
-  border-top: 1px solid ${props => props.theme.muted};
-`
-
-const FooterContent = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-`
-
-const SocialLinks = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin: 1rem 0;
-`
-
-const SocialLink = styled.a`
-  color: ${props => props.theme.text};
-  font-size: 1.25rem;
-  
-  &:hover {
-    color: ${props => props.theme.primary};
-  }
-`
-
-const Copyright = styled.p`
-  margin: 0;
-  font-size: 0.9rem;
-`
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   
   return (
-    <FooterContainer>
-      <FooterContent>
-        <SocialLinks>
-          <SocialLink href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+    <footer className="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark p-8 mt-12 border-t border-muted-light dark:border-muted-dark">
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div className="flex gap-6 my-4">
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Twitter"
+            className="text-text-light dark:text-text-dark text-xl hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200"
+          >
             Twitter
-          </SocialLink>
-          <SocialLink href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          </a>
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Instagram"
+            className="text-text-light dark:text-text-dark text-xl hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200"
+          >
             Instagram
-          </SocialLink>
-          <SocialLink href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          </a>
+          <a 
+            href="https://github.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="GitHub"
+            className="text-text-light dark:text-text-dark text-xl hover:text-primary-light dark:hover:text-primary-dark transition-colors duration-200"
+          >
             GitHub
-          </SocialLink>
-        </SocialLinks>
-        <Copyright>
+          </a>
+        </div>
+        <p className="text-sm">
           &copy; {currentYear} Daily Zen. All rights reserved.
-        </Copyright>
-      </FooterContent>
-    </FooterContainer>
+        </p>
+      </div>
+    </footer>
   )
 }
 

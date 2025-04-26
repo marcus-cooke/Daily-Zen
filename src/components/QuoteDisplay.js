@@ -1,99 +1,5 @@
 import React from "react"
-import styled from "styled-components"
 import { Link } from "gatsby"
-
-const QuoteCard = styled.div`
-  background-color: ${props => props.theme.background};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-5px);
-  }
-`
-
-const QuoteText = styled.blockquote`
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.6;
-  margin: 0 0 1.5rem 0;
-  padding-left: 1.5rem;
-  border-left: 4px solid ${props => props.theme.primary};
-  color: ${props => props.theme.text};
-`
-
-const QuoteAuthor = styled.p`
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: ${props => props.theme.primary};
-  margin: 0;
-  text-align: right;
-`
-
-const QuoteSource = styled.p`
-  font-size: 0.9rem;
-  color: ${props => props.theme.text};
-  opacity: 0.7;
-  margin: 0.25rem 0 0 0;
-  text-align: right;
-`
-
-const QuoteMeta = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.5rem;
-`
-
-const QuoteDate = styled.p`
-  font-size: 0.9rem;
-  color: ${props => props.theme.text};
-  opacity: 0.7;
-  margin: 0;
-`
-
-const CategoryTag = styled(Link)`
-  display: inline-block;
-  background-color: ${props => props.theme.muted};
-  color: ${props => props.theme.primary};
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-decoration: none;
-  
-  &:hover {
-    background-color: ${props => props.theme.primary};
-    color: white;
-  }
-`
-
-const SocialShare = styled.div`
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1rem;
-`
-
-const ShareButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme.muted};
-  color: ${props => props.theme.primary};
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  
-  &:hover {
-    background-color: ${props => props.theme.primary};
-    color: white;
-  }
-`
 
 const QuoteDisplay = ({ quote }) => {
   // Function to format date
@@ -124,27 +30,48 @@ const QuoteDisplay = ({ quote }) => {
   }
   
   return (
-    <QuoteCard>
-      <QuoteText>{quote.text}</QuoteText>
-      <QuoteAuthor>{quote.author}</QuoteAuthor>
-      {quote.source && <QuoteSource>{quote.source}</QuoteSource>}
+    <div className="bg-white dark:bg-background-dark shadow-md rounded-lg p-8 mb-8 transition-transform duration-300 hover:-translate-y-1">
+      <blockquote className="text-2xl font-medium leading-relaxed mb-6 pl-6 border-l-4 border-primary-light dark:border-primary-dark text-text-light dark:text-text-dark">
+        {quote.text}
+      </blockquote>
+      <p className="text-lg font-semibold text-primary-light dark:text-primary-dark text-right">
+        {quote.author}
+      </p>
+      {quote.source && (
+        <p className="text-sm text-text-light dark:text-text-dark opacity-70 mt-1 text-right">
+          {quote.source}
+        </p>
+      )}
       
-      <QuoteMeta>
-        <QuoteDate>{formatDate(quote.date)}</QuoteDate>
-        <CategoryTag to={`/category/${quote.category.toLowerCase().replace(/\s+/g, '-')}`}>
+      <div className="flex justify-between items-center mt-6">
+        <p className="text-sm text-text-light dark:text-text-dark opacity-70">
+          {formatDate(quote.date)}
+        </p>
+        <Link 
+          to={`/category/${quote.category.toLowerCase().replace(/\s+/g, '-')}`}
+          className="inline-block bg-muted-light dark:bg-muted-dark text-primary-light dark:text-primary-dark px-3 py-1 rounded-full text-xs font-medium hover:bg-primary-light hover:dark:bg-primary-dark hover:text-white transition-colors duration-200"
+        >
           {quote.category}
-        </CategoryTag>
-      </QuoteMeta>
+        </Link>
+      </div>
       
-      <SocialShare>
-        <ShareButton onClick={() => share('twitter')} aria-label="Share on Twitter">
+      <div className="flex gap-3 mt-4">
+        <button 
+          onClick={() => share('twitter')} 
+          aria-label="Share on Twitter"
+          className="flex items-center justify-center bg-muted-light dark:bg-muted-dark text-primary-light dark:text-primary-dark rounded px-3 py-2 text-sm cursor-pointer hover:bg-primary-light hover:dark:bg-primary-dark hover:text-white transition-colors duration-200"
+        >
           Twitter
-        </ShareButton>
-        <ShareButton onClick={() => share('facebook')} aria-label="Share on Facebook">
+        </button>
+        <button 
+          onClick={() => share('facebook')} 
+          aria-label="Share on Facebook"
+          className="flex items-center justify-center bg-muted-light dark:bg-muted-dark text-primary-light dark:text-primary-dark rounded px-3 py-2 text-sm cursor-pointer hover:bg-primary-light hover:dark:bg-primary-dark hover:text-white transition-colors duration-200"
+        >
           Facebook
-        </ShareButton>
-      </SocialShare>
-    </QuoteCard>
+        </button>
+      </div>
+    </div>
   )
 }
 
