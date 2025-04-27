@@ -9,29 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          light: '#805ad5', // Light theme primary
-          dark: '#805ad5',  // Dark theme primary
-        },
-        secondary: {
-          light: '#553c9a', // Light theme secondary
-          dark: '#6b46c1',  // Dark theme secondary
-        },
-        accent: {
-          light: '#805ad5',  // Light theme accent
-          dark: '#9f7aea',   // Dark theme accent
-        },
+        primary: '#594D3E', // Minimalist-4-hex
+        secondary: '#8C7E6C', // Minimalist-5-hex
+        accent: '#BFBBB4', // Minimalist-1-hex
+        light: '#F2EFE9', // Minimalist-2-hex
+        highlight: '#D9D6D0', // Minimalist-3-hex
         background: {
-          light: '#ffffff', // Light theme background
-          dark: '#1a202c',  // Dark theme background
+          light: '#F2EFE9',
+          dark: '#594D3E',
         },
         text: {
-          light: '#333333', // Light theme text
-          dark: '#f7fafc',  // Dark theme text
-        },
-        muted: {
-          light: '#e9d8fd', // Light theme muted
-          dark: '#44337a',  // Dark theme muted
+          light: '#594D3E',
+          dark: '#F2EFE9',
         },
       },
     },

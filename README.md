@@ -19,6 +19,28 @@ A static website that displays inspirational and motivational quotes on a daily 
 - **Version Control**: Git/GitHub
 - **Data Source**: JSON file for quotes database
 
+## Automated Daily Builds
+
+This project is set up with GitHub Actions to automatically rebuild and deploy the site once per day. This ensures a new random quote is generated and displayed daily.
+
+### How it works
+
+1. A GitHub Actions workflow runs at midnight UTC every day
+2. The workflow builds the Gatsby site, which selects a random quote
+3. The built site is deployed to GitHub Pages automatically
+
+### Setting up GitHub Pages
+
+To enable GitHub Pages for this repository:
+
+1. Go to your repository settings
+2. Navigate to "Pages" section
+3. Set the source to "Deploy from a branch"
+4. Select the "gh-pages" branch 
+5. Save your settings
+
+The GitHub Actions workflow will handle the deployment to this branch automatically.
+
 ## Getting Started
 
 ### Prerequisites

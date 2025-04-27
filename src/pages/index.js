@@ -27,8 +27,6 @@ const IndexPage = ({ data }) => {
       description="Get your daily dose of inspiration with thoughtful quotes."
     >
       <div className="text-center max-w-3xl mx-auto">
-        <h1 className="text-4xl mb-2 text-text-light dark:text-text-dark">Daily Zen</h1>
-        <p className="text-xl mb-12 text-text-light dark:text-text-dark opacity-80">Your daily dose of inspiration</p>
         {randomQuote && <QuoteDisplay quote={quoteWithDefaults} />}
       </div>
     </Layout>
