@@ -14,11 +14,7 @@ const IndexPage = ({ data }) => {
   // Add required fields for QuoteDisplay component
   const quoteWithDefaults = {
     text: randomQuote.text,
-    author: randomQuote.author,
-    category: "Wisdom",
-    date: new Date().toISOString(),
-    id: `quote-${randomIndex}`,
-    source: ""
+    author: randomQuote.author
   }
   
   return (
