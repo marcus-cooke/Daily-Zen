@@ -1,11 +1,11 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import QuoteDisplay from "../components/QuoteDisplay"
+import quotesData from "../data/quotes.json"
 
-const IndexPage = ({ data }) => {
-  // Get all quotes from the quoteSample.json file
-  const allQuotes = data.dataJson.quotes
+const IndexPage = () => {
+  // Get all quotes from the quotes.json file
+  const allQuotes = quotesData.quotes
   
   // Select a random quote
   const randomIndex = Math.floor(Math.random() * allQuotes.length)
@@ -28,16 +28,5 @@ const IndexPage = ({ data }) => {
     </Layout>
   )
 }
-
-export const query = graphql`
-  query {
-    dataJson {
-      quotes {
-        author
-        text
-      }
-    }
-  }
-`
 
 export default IndexPage 
