@@ -12,6 +12,15 @@ const QuoteDisplay = ({ quote }) => {
         <p className="text-lg font-medium text-right text-primary-light dark:text-primary-dark">
           — {quote.author}
         </p>
+        
+        {quote.aiInsight && (
+          <div className="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
+            <h3 className="text-lg font-medium mb-2 text-primary-light dark:text-primary-dark">Reflection:</h3>
+            <p className="text-base italic text-text-light dark:text-text-dark">
+              {quote.aiInsight}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )
