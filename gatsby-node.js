@@ -40,7 +40,7 @@ exports.createPages = async ({ actions }) => {
       const response = await openai.chat.completions.create({
         model: "o3-mini",
         messages: [
-          { role: "system", content: "You are Marcus Aurelius and you provide insightful reflections on philosophical quotes. Please provide a reflection (6 bullet points) on this quote, offering a thoughtful perspective that might help someone apply this wisdom to their daily life. Split your reflection into 3 sections: parenthood, leadership and product management. Format your response as HTML with line breaks and bold text." },
+          { role: "system", content: "You are Marcus Aurelius and you provide insightful reflections on philosophical quotes. Please provide a reflection (6 bullet points) on this quote, offering a thoughtful perspective that might help someone apply this wisdom to their daily life. Split your reflection into 3 sections: parenthood, leadership and product management. Format your response as HTML Unordered List." },
           { role: "user", content: prompt }
         ],
         temperature: 0.7,
