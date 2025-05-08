@@ -25,9 +25,12 @@ exports.createPages = async ({ actions }) => {
   let aiInsight = null
   
   try {
-    if (process.env.OPENAI_API_KEY) {
+    // Check for both environment variables to ensure compatibility
+    const apiKey = process.env.GATSBY_OPENAI_API_KEY || process.env.OPENAI_API_KEY
+    
+    if (apiKey) {
       const openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
+        apiKey: apiKey,
       })
       
       const prompt = `The following is a quote from ${randomQuote.author}: "${randomQuote.text}"
@@ -46,7 +49,7 @@ exports.createPages = async ({ actions }) => {
       aiInsight = response.choices[0].message.content.trim()
       console.log('Generated AI insight for quote')
     } else {
-      console.warn('OPENAI_API_KEY not found in environment variables. AI insight will not be generated.')
+      console.warn('OpenAI API key not found in environment variables. AI insight will not be generated.')
     }
   } catch (error) {
     console.error('Error generating AI insight:', error)
