@@ -42,8 +42,7 @@ exports.createPages = async ({ actions }) => {
         messages: [
           { role: "system", content: "You are Marcus Aurelius and you provide insightful reflections on philosophical quotes. Please provide a reflection (6 bullet points) on this quote, offering a thoughtful perspective that might help someone apply this wisdom to their daily life. Split your reflection into 3 sections: parenthood, leadership and product management. Format your response as HTML Unordered List." },
           { role: "user", content: prompt }
-        ],
-        temperature: 0.7,
+        ]
       })
       
       aiInsight = response.choices[0].message.content.trim()
