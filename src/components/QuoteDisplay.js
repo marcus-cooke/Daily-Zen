@@ -17,7 +17,7 @@ const QuoteDisplay = ({ quote }) => {
           <div className="mt-8 pt-6 border-t border-gray-300 dark:border-gray-700">
             <h3 className="text-lg font-medium mb-2 text-primary-light dark:text-primary-dark">Reflection:</h3>
             <p className="text-base italic text-text-light dark:text-text-dark">
-              {quote.aiInsight}
+              <div dangerouslySetInnerHTML={{ __html: quote.aiInsight }} />
             </p>
           </div>
         )}
